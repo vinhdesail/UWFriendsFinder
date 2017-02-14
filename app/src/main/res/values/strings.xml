@@ -2,6 +2,7 @@
     <string name="app_name">UWFriendsFinder</string>
     <string name="button_login">Login</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="friend_listing">See Friends Location</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -14,5 +15,8 @@
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
-    </string>>
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>>
 </resources>
