@@ -1,6 +1,7 @@
 package smith.vien.uwfriendsfinder;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,6 +101,10 @@ public class FriendsDetailFragment extends Fragment {
         myDisplayName = (TextView) view.findViewById(R.id.friend_name);
         myFeeling = (TextView) view.findViewById(R.id.friend_feeling);
         myLocation = (TextView) view.findViewById(R.id.friend_location);
+
+        FloatingActionButton floatingActionButton = (FloatingActionButton)
+                getActivity().findViewById(R.id.fab);
+        floatingActionButton.show();
 
         return view;
 

@@ -3,6 +3,10 @@
     <string name="button_login">Login</string>
     <string name="title_activity_login">Sign in</string>
     <string name="friend_listing">See Friends Location</string>
+    <string name="update_info">Update Info</string>
+    <string name="display_name">Display Name</string>
+    <string name="location">Location</string>
+    <string name="feelings">Feelings</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
