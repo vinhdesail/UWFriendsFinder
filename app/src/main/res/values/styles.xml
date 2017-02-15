@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Styles for UW Buttons -->
+    <style name="uw_button_purple">
+        <item name="android:background">@drawable/uw_button_purple</item>
+        <item name="android:textColor">@color/uw_button_purple</item>
+    </style>
+
 </resources>

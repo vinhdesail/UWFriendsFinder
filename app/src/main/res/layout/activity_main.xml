@@ -15,12 +15,15 @@
         android:layout_width="wrap_content"
         android:layout_weight="1"
         android:src="@drawable/uw"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Welcome, check out what's your friends are up to!" />
+
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        style="@style/uw_button_purple"
         android:text="@string/button_login"
         android:onClick="loginActivity" />
     <Button
@@ -29,5 +32,13 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/action_register"
         android:onClick="registerActivity" />
-    
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/uw_button_purple"
+        android:text="@string/friend_listing"
+        android:onClick="friendListing" />
+
 </LinearLayout>
