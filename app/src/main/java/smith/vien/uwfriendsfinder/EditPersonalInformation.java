@@ -28,13 +28,14 @@ import java.net.URLEncoder;
 public class EditPersonalInformation extends Fragment {
 
     // TODO PUT URL HERE
-    private static final String UPDATE_URL = "";
+    private static final String UPDATE_URL = "http://cssgate.insttech.washington.edu/~vvien/TCSS450MobileApps/updateMyData.php?";
 
     private EditInfomationListener mListener;
 
-    private TextView myCurrentDisplayName;
-    private TextView myCurrentLocation;
-    private TextView myCurrentFeelings;
+//    private TextView myCurrentDisplayName;
+//    private TextView myCurrentLocation;
+//    private TextView myCurrentFeelings;
+    private EditText myEmail;
     private EditText myNewDisplayname;
     private EditText myNewLocation;
     private EditText myNewFeelings;
@@ -69,9 +70,10 @@ public class EditPersonalInformation extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_edit_personal_information, container, false);
 
-        myCurrentDisplayName = (TextView) v.findViewById(R.id.show_current_display_name);
-        myCurrentLocation = (TextView) v.findViewById(R.id.show_current_location);
-        myCurrentFeelings = (TextView) v.findViewById(R.id.show_current_feelings);
+//        myCurrentDisplayName = (TextView) v.findViewById(R.id.show_current_display_name);
+//        myCurrentLocation = (TextView) v.findViewById(R.id.show_current_location);
+//        myCurrentFeelings = (TextView) v.findViewById(R.id.show_current_feelings);
+        myEmail = (EditText) v.findViewById(R.id.edit_email);
         myNewDisplayname = (EditText) v.findViewById(R.id.edit_display_name);
         myNewLocation = (EditText) v.findViewById(R.id.edit_location);
         myNewFeelings = (EditText) v.findViewById(R.id.edit_feelings);
@@ -132,21 +134,23 @@ public class EditPersonalInformation extends Fragment {
 
         try {
 
-            String displayName = myNewDisplayname.getText().toString();
-            sb.append("displayName=");
-            sb.append(displayName);
+            String email = myEmail.getText().toString();
+            sb.append("email=");
+            sb.append(URLEncoder.encode(email, "UTF-8"));
 
+            String displayName = myNewDisplayname.getText().toString();
+            sb.append("&displayName=");
+            sb.append(URLEncoder.encode(displayName, "UTF-8"));
 
             String location = myNewLocation.getText().toString();
             sb.append("&location=");
             sb.append(URLEncoder.encode(location, "UTF-8"));
 
-
             String feelings = myNewFeelings.getText().toString();
             sb.append("&feelings=");
             sb.append(URLEncoder.encode(feelings, "UTF-8"));
-
-            Log.i("CourseAddFragment", sb.toString());
+            //sb.append(URLEncoder.encode(feelings, "UTF-8"));
+            Log.i("UpdateFragment", sb.toString());
 
         }
         catch(Exception e) {

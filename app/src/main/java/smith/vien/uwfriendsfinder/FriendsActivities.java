@@ -94,7 +94,7 @@ public class FriendsActivities extends AppCompatActivity
                     }
 
                 } catch (Exception e) {
-                    response = "Unable to add course, Reason: "
+                    response = "Unable to add update, Reason: "
                             + e.getMessage();
                 } finally {
                     if (urlConnection != null)
@@ -117,7 +117,7 @@ public class FriendsActivities extends AppCompatActivity
             // Something wrong with the network or the URL.
             try {
                 JSONObject jsonObject = new JSONObject(result);
-                String status = (String) jsonObject.get("result");
+                String status = (String) jsonObject.get("status");
                 if (status.equals("success")) {
                     Toast.makeText(getApplicationContext(), "Info successfully updated!"
                             , Toast.LENGTH_LONG)

@@ -19,39 +19,12 @@ import smith.vien.uwfriendsfinder.friendlisting.Friends;
  * create an instance of this fragment.
  */
 public class FriendsDetailFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    public static final String DETAIL_PARAM = "detail_param";
-    public final static String FRIEND_SELECTED = "friend_selected";
 
-    // TODO: Rename and change types of parameters
-    private Friends myFreindItem;
+    public final static String FRIEND_SELECTED = "friend_selected";
 
     private TextView myDisplayName;
     private TextView myLocation;
-    private TextView myId;
     private TextView myFeeling;
-
-
-    //private OnFragmentInteractionListener mListener;
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment CourseDetailFragment.
-     */
-    public static FriendsDetailFragment getCourseDetailFragment(
-            Friends friendItem) {
-        FriendsDetailFragment fragment = new FriendsDetailFragment();
-        Bundle args = new Bundle();
-        args.putSerializable(DETAIL_PARAM, friendItem);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
 
     /**
      * Use this factory method to create a new instance of
@@ -64,27 +37,19 @@ public class FriendsDetailFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static FriendsDetailFragment newInstance(String theName, String theLocation) {
         FriendsDetailFragment fragment = new FriendsDetailFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, theName);
-        args.putString(ARG_PARAM2, theLocation);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            myFreindItem = (Friends)
-                    getArguments().getSerializable(DETAIL_PARAM);
-        }
+
     }
 
     public void updateView(Friends item) {
         if (item != null) {
-            myId.setText(item.getId());
             myDisplayName.setText(item.getDisplayName());
-            myFeeling.setText(item.getFname());
+            myFeeling.setText(item.getFeelings());
             myLocation.setText(item.getLocation());
         }
 
@@ -97,7 +62,6 @@ public class FriendsDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_friends_detail, container, false);
-        myId = (TextView) view.findViewById(R.id.friend_id);
         myDisplayName = (TextView) view.findViewById(R.id.friend_name);
         myFeeling = (TextView) view.findViewById(R.id.friend_feeling);
         myLocation = (TextView) view.findViewById(R.id.friend_location);
@@ -125,44 +89,4 @@ public class FriendsDetailFragment extends Fragment {
         }
     }
 
-
-
-    // TODO: Rename method, update argument and hook method into UI event
-//    public void onButtonPressed(Uri uri) {
-//        if (mListener != null) {
-//            mListener.onFragmentInteraction(uri);
-//        }
-//    }
-
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-//    }
-//
-//    @Override
-//    public void onDetach() {
-//        super.onDetach();
-//        mListener = null;
-//    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-//    public interface OnFragmentInteractionListener {
-//        // TODO: Update argument type and name
-//        void onFragmentInteraction(Uri uri);
-//    }
 }
