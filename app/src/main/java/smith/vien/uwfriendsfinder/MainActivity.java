@@ -17,24 +17,27 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+/**
+ * All functionality for user login is contained in this class.
+ */
 public class MainActivity extends AppCompatActivity {
-    private static final String COURSE_URL = "http://cssgate.insttech.washington.edu/~azoni/Android/movie_add.php?";
-    private static final String COURSE_URL2 = "http://cssgate.insttech.washington.edu/~azoni/Android/list.php?";
+
+    private static final String USER_URL = "http://cssgate.insttech.washington.edu/~azoni/Android/movie_add.php?";
+    private static final String REGISTER_URL = "http://cssgate.insttech.washington.edu/~azoni/Android/list.php?";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
     public void loginOnClick(View view){
         AddCourseTask task = new AddCourseTask();
         EditText email = (EditText) findViewById(R.id.email);
         EditText pass = (EditText) findViewById(R.id.password);
         String p = pass.getText().toString();
         String e = email.getText().toString();
-        task.execute(COURSE_URL + "email=" + e + "&" + "password=" + p);
-// Takes you back to the previous fragment by popping the current fragment out.
+        task.execute(USER_URL + "email=" + e + "&" + "password=" + p);
         getSupportFragmentManager().popBackStackImmediate();
     }
     public void registerOnClick(View view) {
@@ -43,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         String p = pass.getText().toString();
         String e = email.getText().toString();
         AddCourseTask task = new AddCourseTask();
-        task.execute(COURSE_URL2 + "email=" + e + "&password=" + p);
+        task.execute(REGISTER_URL + "email=" + e + "&password=" + p);
         getSupportFragmentManager().popBackStackImmediate();
     }
 
