@@ -32,12 +32,10 @@ import smith.vien.uwfriendsfinder.friendlisting.Friends;
  */
 public class FriendsFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
     private static final String FRIEND_LIST_URL
             = "http://cssgate.insttech.washington.edu/~azoni/users.php";
 
-    private int mColumnCount = 1;
+    private static final int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     private RecyclerView mRecyclerView;
 
@@ -48,25 +46,31 @@ public class FriendsFragment extends Fragment {
     public FriendsFragment() {
     }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static FriendsFragment newInstance(int columnCount) {
+    /**
+     * Constructor to create the fragment.
+     * @return FriendFragment.
+     */
+    public static FriendsFragment newInstance() {
         FriendsFragment fragment = new FriendsFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
         return fragment;
     }
 
+    /**
+     * Called when created.
+     * @param savedInstanceState Saved State.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-        }
     }
 
+    /**
+     * Set up the view for the fragment
+     * @param inflater Inflater.
+     * @param container Container.
+     * @param savedInstanceState Saved State.
+     * @return View.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -92,7 +96,10 @@ public class FriendsFragment extends Fragment {
     }
 
 
-
+    /**
+     * Attach the listener.
+     * @param context The listner.
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -104,6 +111,9 @@ public class FriendsFragment extends Fragment {
         }
     }
 
+    /**
+     * Remove the listener.
+     */
     @Override
     public void onDetach() {
         super.onDetach();
@@ -111,20 +121,15 @@ public class FriendsFragment extends Fragment {
     }
 
     /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
+     * Interface for listener.
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onListFragmentInteraction(Friends item);
     }
 
+    /**
+     * The task to call webservice and get friends information.
+     */
     private class DownloadFriendsTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {

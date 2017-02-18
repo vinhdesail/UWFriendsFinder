@@ -18,6 +18,8 @@ import java.net.URLEncoder;
 
 
 /**
+ * Fragment that handle the edit information for the current user.
+ *
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
  * {@link EditPersonalInformation.EditInfomationListener} interface
@@ -27,11 +29,13 @@ import java.net.URLEncoder;
  */
 public class EditPersonalInformation extends Fragment {
 
-    // TODO PUT URL HERE
+    /** Main URL to update data.*/
     private static final String UPDATE_URL = "http://cssgate.insttech.washington.edu/~vvien/TCSS450MobileApps/updateMyData.php?";
 
+    /** Listener for the class. */
     private EditInfomationListener mListener;
 
+    // Commented out for future code.
 //    private TextView myCurrentDisplayName;
 //    private TextView myCurrentLocation;
 //    private TextView myCurrentFeelings;
@@ -40,30 +44,40 @@ public class EditPersonalInformation extends Fragment {
     private EditText myNewLocation;
     private EditText myNewFeelings;
 
+    /**
+     * Default constructor.
+     */
     public EditPersonalInformation() {
         // Required empty public constructor
     }
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * Creates new fragment.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment EditPersonalInformation.
      */
-    // TODO: Rename and change types and number of parameters
-    public static EditPersonalInformation newInstance(String param1, String param2) {
+    public static EditPersonalInformation newInstance() {
         EditPersonalInformation fragment = new EditPersonalInformation();
         return fragment;
     }
 
+    /**
+     * Runs when when fragment is created.
+     * @param savedInstanceState Saved State.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
 
+    /**
+     * Create the view for the fragment.
+     * @param inflater Inflater.
+     * @param container Container.
+     * @param savedInstanceState Saved State.
+     * @return View.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -95,6 +109,10 @@ public class EditPersonalInformation extends Fragment {
         return v;
     }
 
+    /**
+     * Attach the listener.
+     * @param context The Listener.
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -106,6 +124,9 @@ public class EditPersonalInformation extends Fragment {
         }
     }
 
+    /**
+     * Detach the Listener.
+     */
     @Override
     public void onDetach() {
         super.onDetach();
@@ -113,21 +134,17 @@ public class EditPersonalInformation extends Fragment {
     }
 
     /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
+     * Interface for the listener.
      */
     public interface EditInfomationListener {
-        // TODO: Update argument type and name
         void editInfo(String url);
     }
 
-    // TODO fix the edited base on database
+    /**
+     * Builds the url for request.
+     * @param v View.
+     * @return String that represent the url.
+     */
     private String buildCourseURL(View v) {
 
         StringBuilder sb = new StringBuilder(UPDATE_URL);

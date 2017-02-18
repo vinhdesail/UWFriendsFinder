@@ -12,6 +12,8 @@ import smith.vien.uwfriendsfinder.friendlisting.Friends;
 
 
 /**
+ * The fragment that gives you details about friends.
+ *
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
  * to handle interaction events.
@@ -27,25 +29,29 @@ public class FriendsDetailFragment extends Fragment {
     private TextView myFeeling;
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
+     * Constructor for the class.
      *
-     * @param theName Parameter 1.
-     * @param theLocation Parameter 2.
      * @return A new instance of fragment FriendsDetailFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static FriendsDetailFragment newInstance(String theName, String theLocation) {
+    public static FriendsDetailFragment newInstance() {
         FriendsDetailFragment fragment = new FriendsDetailFragment();
         return fragment;
     }
 
+    /**
+     * Create the fragment.
+     * @param savedInstanceState Saved State.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
 
+    /**
+     * Get the changes and update.
+     * @param item Friend item.
+     */
     public void updateView(Friends item) {
         if (item != null) {
             myDisplayName.setText(item.getDisplayName());
@@ -55,12 +61,16 @@ public class FriendsDetailFragment extends Fragment {
 
     }
 
-
+    /**
+     * Set up the view for the fragment.
+     * @param inflater Inflater.
+     * @param container Container.
+     * @param savedInstanceState Saved State.
+     * @return View.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_friends_detail, container, false);
         myDisplayName = (TextView) view.findViewById(R.id.friend_name);
         myFeeling = (TextView) view.findViewById(R.id.friend_feeling);
@@ -74,6 +84,9 @@ public class FriendsDetailFragment extends Fragment {
 
     }
 
+    /**
+     * Called when started.
+     */
     @Override
     public void onStart() {
         super.onStart();
