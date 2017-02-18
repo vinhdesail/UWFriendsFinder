@@ -21,8 +21,13 @@ import java.net.URL;
  * All functionality for user login is contained in this class.
  */
 public class MainActivity extends AppCompatActivity {
-
+    /**
+     * URL for login function.
+     */
     private static final String USER_URL = "http://cssgate.insttech.washington.edu/~azoni/Android/movie_add.php?";
+    /**
+     * URL to add new user to the database.
+     */
     private static final String REGISTER_URL = "http://cssgate.insttech.washington.edu/~azoni/Android/list.php?";
 
     @Override
@@ -30,9 +35,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
+    /**
+     * Button to allow user to login with information that was inputted into EditText fields.
+     * @param view
+     */
     public void loginOnClick(View view){
-        AddCourseTask task = new AddCourseTask();
+        UserAsync task = new UserAsync();
         EditText email = (EditText) findViewById(R.id.email);
         EditText pass = (EditText) findViewById(R.id.password);
         String p = pass.getText().toString();
@@ -40,17 +48,21 @@ public class MainActivity extends AppCompatActivity {
         task.execute(USER_URL + "email=" + e + "&" + "password=" + p);
         getSupportFragmentManager().popBackStackImmediate();
     }
+    /**
+     * Button to allow user to register information that was inputted into EditText fields.
+     * @param view
+     */
     public void registerOnClick(View view) {
         EditText email = (EditText) findViewById(R.id.email);
         EditText pass = (EditText) findViewById(R.id.password);
         String p = pass.getText().toString();
         String e = email.getText().toString();
-        AddCourseTask task = new AddCourseTask();
+        UserAsync task = new UserAsync();
         task.execute(REGISTER_URL + "email=" + e + "&password=" + p);
         getSupportFragmentManager().popBackStackImmediate();
     }
 
-    private class AddCourseTask extends AsyncTask<String, Void, String> {
+    private class UserAsync extends AsyncTask<String, Void, String> {
 
 
         @Override
