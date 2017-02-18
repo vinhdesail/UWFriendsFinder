@@ -36,8 +36,8 @@ public class MyfriendRecyclerViewAdapter extends RecyclerView.Adapter<MyfriendRe
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).getId());
-        holder.mContentView.setText(mValues.get(position).getDisplayName());
+        holder.mIdView.setText(mValues.get(position).getDisplayName());
+        holder.mContentView.setText(mValues.get(position).getLocation());
 
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +66,7 @@ public class MyfriendRecyclerViewAdapter extends RecyclerView.Adapter<MyfriendRe
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
+            mIdView = (TextView) view.findViewById(R.id.email);
             mContentView = (TextView) view.findViewById(R.id.content);
         }
 

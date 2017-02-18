@@ -34,8 +34,8 @@ public class FriendsFragment extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    private static final String COURSE_URL
-            = "http://cssgate.insttech.washington.edu/~vvien/TCSS450MobileApps/list.php?cmd=courses";
+    private static final String FRIEND_LIST_URL
+            = "http://cssgate.insttech.washington.edu/~azoni/users.php";
 
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
@@ -81,8 +81,8 @@ public class FriendsFragment extends Fragment {
             } else {
                 mRecyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            DownloadCoursesTask task = new DownloadCoursesTask();
-            task.execute(new String[]{COURSE_URL});
+            DownloadFriendsTask task = new DownloadFriendsTask();
+            task.execute(new String[]{FRIEND_LIST_URL});
         }
         FloatingActionButton floatingActionButton = (FloatingActionButton)
                 getActivity().findViewById(R.id.fab);
@@ -125,7 +125,7 @@ public class FriendsFragment extends Fragment {
         void onListFragmentInteraction(Friends item);
     }
 
-    private class DownloadCoursesTask extends AsyncTask<String, Void, String> {
+    private class DownloadFriendsTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
             String response = "";
