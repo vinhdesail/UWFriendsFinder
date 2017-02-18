@@ -12,6 +12,8 @@ import smith.vien.uwfriendsfinder.friendlisting.Friends;
 import java.util.List;
 
 /**
+ * The recycle to help list all friends.
+ *
  * {@link RecyclerView.Adapter} that can display a {@link Friends} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
@@ -21,11 +23,22 @@ public class MyfriendRecyclerViewAdapter extends RecyclerView.Adapter<MyfriendRe
     private final List<Friends> mValues;
     private final OnListFragmentInteractionListener mListener;
 
+    /**
+     * Constructor for friends and listener.
+     * @param items Friends.
+     * @param listener theListener.
+     */
     public MyfriendRecyclerViewAdapter(List<Friends> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
 
+    /**
+     * This calls a xml to hold the view.
+     * @param parent Parent.
+     * @param viewType viewType.
+     * @return ViewHold.
+     */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -33,6 +46,11 @@ public class MyfriendRecyclerViewAdapter extends RecyclerView.Adapter<MyfriendRe
         return new ViewHolder(view);
     }
 
+    /**
+     * This set the view on the fragment.
+     * @param holder The holder.
+     * @param position The position.
+     */
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
@@ -52,11 +70,18 @@ public class MyfriendRecyclerViewAdapter extends RecyclerView.Adapter<MyfriendRe
         });
     }
 
+    /**
+     * Count the amount of itmes.
+     * @return The count.
+     */
     @Override
     public int getItemCount() {
         return mValues.size();
     }
 
+    /**
+     * The class to hold current view.
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;

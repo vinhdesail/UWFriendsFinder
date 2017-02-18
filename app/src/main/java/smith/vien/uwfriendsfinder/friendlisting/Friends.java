@@ -8,18 +8,26 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Helper class for providing sample fname for user interfaces created by
- * Android template wizards.
+ * Helper class for providing sample Friends Data
  * <p>
  *     Content about friends.
  * </p>
  */
 public class Friends implements Serializable{
 
+    /** The field for display name.*/
     private String displayName;
+    /** The field for feelings.*/
     private String feelings;
+    /** The field for location.*/
     private String location;
 
+    /**
+     * The main constructor to save data.
+     * @param displayName Name to be displayed.
+     * @param feelings The feeling.
+     * @param location The location.
+     */
     public Friends(String displayName,
                    String feelings, String location) {
         this.displayName = displayName;
@@ -27,6 +35,9 @@ public class Friends implements Serializable{
         this.location = location;
     }
 
+    /**
+     * Default contructor to construct temporary data.
+     */
     public Friends(){
         this("Vinh", "Happy", "cp206");
     }

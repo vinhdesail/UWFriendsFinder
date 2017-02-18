@@ -19,10 +19,18 @@ import java.net.URL;
 
 import smith.vien.uwfriendsfinder.friendlisting.Friends;
 
+/**
+ * The activity that shows all friends.
+ */
 public class FriendsActivities extends AppCompatActivity
         implements FriendsFragment.OnListFragmentInteractionListener,
             EditPersonalInformation.EditInfomationListener{
 
+    /**
+     * Method gets call when activity get created.
+     * Show the friend fragment and adds the floating button.
+     * @param savedInstanceState Saved State.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +55,11 @@ public class FriendsActivities extends AppCompatActivity
         });
     }
 
-
+    /**
+     * The listener for each individual friend.
+     * When selected open up another fragment.
+     * @param item The friend item selected.
+     */
     @Override
     public void onListFragmentInteraction(Friends item) {
         FriendsDetailFragment courseDetailFragment = new FriendsDetailFragment();
@@ -61,6 +73,10 @@ public class FriendsActivities extends AppCompatActivity
                 .commit();
     }
 
+    /**
+     * The listener to let user edit and update personal information.
+     * @param url The webservice url.
+     */
     @Override
     public void editInfo(String url){
         EditInfoTask task = new EditInfoTask();
@@ -69,6 +85,9 @@ public class FriendsActivities extends AppCompatActivity
         getSupportFragmentManager().popBackStackImmediate();
     }
 
+    /**
+     * Private Async task to allow user to edit personal information.
+     */
     private class EditInfoTask extends AsyncTask<String, Void, String> {
 
         @Override
@@ -76,6 +95,11 @@ public class FriendsActivities extends AppCompatActivity
             super.onPreExecute();
         }
 
+        /**
+         * Establish the connection.
+         * @param urls The URL.
+         * @return String the represent the condition of the connection.
+         */
         @Override
         protected String doInBackground(String... urls) {
             String response = "";
@@ -110,7 +134,7 @@ public class FriendsActivities extends AppCompatActivity
          * exception is caught. It tries to call the parse Method and checks to see if it was successful.
          * If not, it displays the exception.
          *
-         * @param result
+         * @param result The result status.
          */
         @Override
         protected void onPostExecute(String result) {
@@ -129,8 +153,7 @@ public class FriendsActivities extends AppCompatActivity
                             .show();
                 }
             } catch (JSONException e) {
-                Toast.makeText(getApplicationContext(), "Something wrong with the data" +
-                        e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Error, Please Fill out all values", Toast.LENGTH_LONG).show();
             }
         }
     }
