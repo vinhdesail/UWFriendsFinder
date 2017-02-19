@@ -1,11 +1,19 @@
 package smith.vien.uwfriendsfinder;
 
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -24,7 +32,14 @@ import smith.vien.uwfriendsfinder.friendlisting.Friends;
  */
 public class FriendsActivities extends AppCompatActivity
         implements FriendsFragment.OnListFragmentInteractionListener,
-            EditPersonalInformation.EditInfomationListener{
+            EditPersonalInformation.EditInfomationListener {
+
+    /** Side bar fields. */
+    private ActionBarDrawerToggle myDrawerToggle;
+    private DrawerLayout myDrawerLayout;
+    private String myActivityTitle;
+    private ListView myDrawList;
+
 
     /**
      * Method gets call when activity get created.
@@ -53,7 +68,17 @@ public class FriendsActivities extends AppCompatActivity
                         .commit();
             }
         });
-    }
+
+        // SIDE MENU
+        myDrawList = (ListView) findViewById(R.id.left_drawer);
+        addDrawerItems();
+
+        myDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        myActivityTitle = getTitle().toString();
+        setupDrawer();
+
+
+    }// end onCreate
 
     /**
      * The listener for each individual friend.
@@ -158,5 +183,79 @@ public class FriendsActivities extends AppCompatActivity
         }
     }
 
+
+
+    // MENU BAR PRIVATE CLASS and METHODS
+    private void addDrawerItems(){
+        String[] osArray = {"Android", "iOS", "Windows", "OS X", "Linux"};
+        myDrawList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray));
+
+        myDrawList.setOnItemClickListener(new ListView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(FriendsActivities.this, "Time for an upgrade!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+    }
+
+    private void setupDrawer(){
+        myDrawerToggle = new ActionBarDrawerToggle(this,
+                myDrawerLayout,
+                R.string.drawer_open,
+                R.string.drawer_close){
+            /** Called when a drawer has settled in a completely open state.*/
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getSupportActionBar().setTitle("Navigation!");
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                getSupportActionBar().setTitle(myActivityTitle);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
+
+        myDrawerToggle.setDrawerIndicatorEnabled(true);
+        myDrawerLayout.addDrawerListener(myDrawerToggle);
+
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState){
+        super.onPostCreate(savedInstanceState);
+        myDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig){
+        super.onConfigurationChanged(newConfig);
+        myDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+
+        // Activate the navigation drawer toggle
+        if (myDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 }

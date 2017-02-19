@@ -9,6 +9,10 @@
     <string name="feelings">Feelings</string>
     <string name="retype_email">Please Retype Email</string>
 
+    <!-- Side menu bar -->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_name">First and Last Name</string>
