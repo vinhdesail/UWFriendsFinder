@@ -193,13 +193,23 @@ public class FriendsActivities extends AppCompatActivity
 
     // MENU BAR PRIVATE CLASS and METHODS
     private void addDrawerItems(){
-        String[] osArray = {"Android", "iOS", "Windows", "OS X", "Linux"};
-        myDrawList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray));
+        String[] menuArray = {"Edit Personal Info", "ADD MORE STUFF"};
+        myDrawList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menuArray));
 
-        myDrawList.setOnItemClickListener(new ListView.OnItemClickListener(){
+        myDrawList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(FriendsActivities.this, "Time for an upgrade!", Toast.LENGTH_SHORT).show();
+                if(position == 0){
+                    Intent intent = getIntent();
+                    final String str = intent.getStringExtra("email");
+                    EditPersonalInformation editInfo = new EditPersonalInformation();
+                    editInfo.setEmail(str);
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, editInfo)
+                            .addToBackStack(null)
+                            .commit();
+                }
             }
         });
 
@@ -215,7 +225,7 @@ public class FriendsActivities extends AppCompatActivity
             /** Called when a drawer has settled in a completely open state.*/
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle("Navigation!");
+                getSupportActionBar().setTitle("Side Menu!");
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
