@@ -1,11 +1,13 @@
 package smith.vien.uwfriendsfinder;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -18,6 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import smith.vien.uwfriendsfinder.friendlisting.Friends;
+
 
 /**
  * The activity that shows all friends.
@@ -41,18 +44,24 @@ public class FriendsActivities extends AppCompatActivity
                     .add(R.id.fragment_container, courseFragment)
                     .commit();
         }
-
+        Intent intent = getIntent();
+        final String str = intent.getStringExtra("email");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EditPersonalInformation editInfo = new EditPersonalInformation();
+                editInfo.setEmail(str);
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, editInfo)
                         .addToBackStack(null)
                         .commit();
             }
         });
+
+
+
+
     }
 
     /**
