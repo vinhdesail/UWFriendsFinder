@@ -209,6 +209,7 @@ public class FriendsActivities extends AppCompatActivity
                             .replace(R.id.fragment_container, editInfo)
                             .addToBackStack(null)
                             .commit();
+                    myDrawerLayout.closeDrawer(myDrawList);
                 }
             }
         });
