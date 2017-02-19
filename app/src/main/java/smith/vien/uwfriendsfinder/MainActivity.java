@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
      * URL to add new user to the database.
      */
     private static final String REGISTER_URL = "http://cssgate.insttech.washington.edu/~azoni/Android/list.php?";
-
+    private String e;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
         EditText email = (EditText) findViewById(R.id.email);
         EditText pass = (EditText) findViewById(R.id.password);
         String p = pass.getText().toString();
-        String e = email.getText().toString();
-        task.execute(USER_URL + "email=" + e + "&" + "password=" + p);
+        e = email.getText().toString();
+        task.execute(USER_URL + "email=" + e + "&" + "password=" + "123456");
+        //task.execute(USER_URL + "email=" + e + "&" + "password=" + p);
         getSupportFragmentManager().popBackStackImmediate();
     }
     /**
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         EditText email = (EditText) findViewById(R.id.email);
         EditText pass = (EditText) findViewById(R.id.password);
         String p = pass.getText().toString();
-        String e = email.getText().toString();
+        e = email.getText().toString();
         UserAsync task = new UserAsync();
         task.execute(REGISTER_URL + "email=" + e + "&password=" + p);
         getSupportFragmentManager().popBackStackImmediate();
@@ -117,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                             , Toast.LENGTH_LONG)
                             .show();
                     Intent intent = new Intent(MainActivity.this, FriendsActivities.class);
+                    intent.putExtra("email", e);
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Failed to add: "
