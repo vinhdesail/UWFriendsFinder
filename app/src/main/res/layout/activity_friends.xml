@@ -51,7 +51,7 @@
                 android:textSize="8pt"
                 android:textColor="@color/uwPurple"
                 android:textStyle="bold"
-                android:text="Feeling"
+                android:text="Hunger"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

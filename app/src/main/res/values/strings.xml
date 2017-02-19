@@ -38,10 +38,10 @@
         <string name="country_prompt">How Are You Feeling?</string>
 
         <string-array name="country_arrays">
-            <item>Sad</item>
-            <item>Rawr</item>
-            <item>Happy</item>
-            <item>Angry</item>
+            <item>Satisfied</item>
+            <item>Could Eat</item>
+            <item>Full</item>
+            <item>Starving</item>
         </string-array>
 
 </resources>

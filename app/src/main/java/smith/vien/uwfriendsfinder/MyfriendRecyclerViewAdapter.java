@@ -2,6 +2,7 @@ package smith.vien.uwfriendsfinder;
 
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,11 +62,18 @@ public class MyfriendRecyclerViewAdapter extends RecyclerView.Adapter<MyfriendRe
         holder.mContentView.setText(mValues.get(position).getLocation());
         holder.mFeelingView.setText(mValues.get(position).getFeelings());
 
-        if (mValues.get(position).getFeelings().toLowerCase().equals("rawr")){
+        Log.i("hey",mValues.get(position).getFeelings().toLowerCase() );
+        if (mValues.get(position).getFeelings().toLowerCase().equals("satisfied")){
             holder.mHungryview.setBackgroundResource(R.drawable.uw);
         }
-        else {
+        else if (mValues.get(position).getFeelings().toLowerCase().equals("could eat")){
             holder.mHungryview.setBackgroundResource(R.drawable.uw2);
+        }
+        else if (mValues.get(position).getFeelings().toLowerCase().equals("full")){
+            holder.mHungryview.setBackgroundResource(R.drawable.uw3);
+        }
+        else if (mValues.get(position).getFeelings().toLowerCase().equals("starving")){
+            holder.mHungryview.setBackgroundResource(R.drawable.uw4);
         }
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +87,6 @@ public class MyfriendRecyclerViewAdapter extends RecyclerView.Adapter<MyfriendRe
             }
         });
     }
-
     /**
      * Count the amount of itmes.
      * @return The count.
