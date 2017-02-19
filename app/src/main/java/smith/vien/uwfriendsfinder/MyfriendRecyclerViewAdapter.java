@@ -1,5 +1,6 @@
 package smith.vien.uwfriendsfinder;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,8 @@ import smith.vien.uwfriendsfinder.FriendsFragment.OnListFragmentInteractionListe
 import smith.vien.uwfriendsfinder.friendlisting.Friends;
 
 import java.util.List;
+
+import static smith.vien.uwfriendsfinder.R.drawable.uw;
 
 /**
  * The recycle to help list all friends.
@@ -56,7 +59,14 @@ public class MyfriendRecyclerViewAdapter extends RecyclerView.Adapter<MyfriendRe
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).getDisplayName());
         holder.mContentView.setText(mValues.get(position).getLocation());
+        holder.mFeelingView.setText(mValues.get(position).getFeelings());
 
+        if (mValues.get(position).getFeelings().toLowerCase().equals("rawr")){
+            holder.mHungryview.setBackgroundResource(R.drawable.uw);
+        }
+        else {
+            holder.mHungryview.setBackgroundResource(R.drawable.uw2);
+        }
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +96,8 @@ public class MyfriendRecyclerViewAdapter extends RecyclerView.Adapter<MyfriendRe
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
+        public final TextView mFeelingView;
+        public final TextView mHungryview;
         public Friends mItem;
 
         public ViewHolder(View view) {
@@ -93,6 +105,8 @@ public class MyfriendRecyclerViewAdapter extends RecyclerView.Adapter<MyfriendRe
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.email);
             mContentView = (TextView) view.findViewById(R.id.content);
+            mFeelingView = (TextView) view.findViewById(R.id.feeling);
+            mHungryview = (TextView) view.findViewById(R.id.hungry);
         }
 
         @Override

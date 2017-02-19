@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,15 +43,18 @@ public class EditPersonalInformation extends Fragment {
     private EditText myEmail;
     private EditText myNewDisplayname;
     private EditText myNewLocation;
-    private EditText myNewFeelings;
-
+    private Spinner myNewFeelings;
+    private String email;
     /**
      * Default constructor.
      */
-    public EditPersonalInformation() {
-        // Required empty public constructor
-    }
+    public EditPersonalInformation(){
 
+    }
+    public void setEmail(String email) {
+        // Required empty public constructor
+        this.email = email;
+    }
     /**
      * Creates new fragment.
      *
@@ -88,9 +92,10 @@ public class EditPersonalInformation extends Fragment {
 //        myCurrentLocation = (TextView) v.findViewById(R.id.show_current_location);
 //        myCurrentFeelings = (TextView) v.findViewById(R.id.show_current_feelings);
         myEmail = (EditText) v.findViewById(R.id.edit_email);
+        myEmail.setText(email);
         myNewDisplayname = (EditText) v.findViewById(R.id.edit_display_name);
         myNewLocation = (EditText) v.findViewById(R.id.edit_location);
-        myNewFeelings = (EditText) v.findViewById(R.id.edit_feelings);
+        myNewFeelings = (Spinner) v.findViewById(R.id.edit_feelings);
 
         Button editInfoButton = (Button) v.findViewById(R.id.button_update_info);
         editInfoButton.setOnClickListener(new View.OnClickListener(){
@@ -163,7 +168,7 @@ public class EditPersonalInformation extends Fragment {
             sb.append("&location=");
             sb.append(URLEncoder.encode(location, "UTF-8"));
 
-            String feelings = myNewFeelings.getText().toString();
+            String feelings = myNewFeelings.getSelectedItem().toString();
             sb.append("&feelings=");
             sb.append(URLEncoder.encode(feelings, "UTF-8"));
             //sb.append(URLEncoder.encode(feelings, "UTF-8"));

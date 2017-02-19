@@ -39,7 +39,7 @@ public class Friends implements Serializable{
      * Default contructor to construct temporary data.
      */
     public Friends(){
-        this("Vinh", "Happy", "cp206");
+        //this("Vinh", "Happy", "cp206");
     }
 
 

@@ -1,25 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    >
-    <TableRow>
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/text_margin"
+        >
         <TextView
             android:id="@+id/email"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_gravity="left"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:textAppearance="?attr/textAppearanceListItem"
+            />
+
+        <TextView
+            android:textStyle="bold"
+
+            android:layout_width="0dp"
+            android:gravity="left"
+            android:id="@+id/content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceListItem" />
 
         <TextView
-            android:id="@+id/content"
+            android:gravity="left"
+            android:textStyle="bold"
             android:layout_weight="1"
-            android:layout_gravity="right"
+            android:id="@+id/feeling"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:textAppearance="?attr/textAppearanceListItem" />
+            android:layout_height="match_parent"
+            android:textAppearance="?attr/textAppearanceListItem"
+            />
+        <TextView
+            android:gravity="left"
+            android:textStyle="bold"
+            android:layout_weight=".5"
+            android:id="@+id/hungry"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textAppearance="?attr/textAppearanceListItem"
+            />
+
+
     </TableRow>
 </TableLayout>

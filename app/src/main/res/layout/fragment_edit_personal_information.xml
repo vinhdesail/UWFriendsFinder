@@ -18,11 +18,12 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:id="@+id/show_current_feelings"/>-->
     <EditText
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_email"
         android:inputType="textEmailAddress"
-        android:hint="@string/retype_email"/>
+        android:hint="@string/retype_email" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,11 +34,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/edit_location"
         android:hint="@string/location"/>
-    <EditText
+
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_feelings"
-        android:hint="@string/feelings"/>
+        android:entries="@array/country_arrays"
+        android:prompt="@string/country_prompt"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_hunger"
+        android:hint="How Hungry Are you? (1-10)"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -5,9 +5,8 @@
     android:id="@+id/list"
     android:name="smith.vien.uwfriendsfinder.friendFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
+    android:layout_height="wrap_content"
+
     app:layoutManager="LinearLayoutManager"
     tools:context="smith.vien.uwfriendsfinder.FriendsFragment"
     tools:listitem="@layout/fragment_friend" />
