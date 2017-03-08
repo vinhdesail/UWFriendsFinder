@@ -75,6 +75,9 @@ public class MyfriendRecyclerViewAdapter extends RecyclerView.Adapter<MyfriendRe
         else if (mValues.get(position).getFeelings().toLowerCase().equals("starving")){
             holder.mHungryview.setBackgroundResource(R.drawable.uw4);
         }
+        else if (mValues.get(position).getFeelings().toLowerCase().equals("dnd")) {
+            holder.mHungryview.setBackgroundResource(R.drawable.uw6);
+        }
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override

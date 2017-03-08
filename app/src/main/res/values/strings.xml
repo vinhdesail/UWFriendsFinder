@@ -42,6 +42,7 @@
             <item>Could Eat</item>
             <item>Full</item>
             <item>Starving</item>
+            <item>DND</item>
         </string-array>
 
 </resources>
