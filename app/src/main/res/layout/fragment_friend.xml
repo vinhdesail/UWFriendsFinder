@@ -38,14 +38,13 @@
             android:layout_height="match_parent"
             android:textAppearance="?attr/textAppearanceListItem"
             />
-        <TextView
+        <ImageView
             android:gravity="left"
             android:textStyle="bold"
             android:layout_weight=".5"
             android:id="@+id/hungry"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:textAppearance="?attr/textAppearanceListItem"
             />
 
 

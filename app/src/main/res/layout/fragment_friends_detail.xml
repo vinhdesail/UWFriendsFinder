@@ -6,6 +6,13 @@
     tools:context="smith.vien.uwfriendsfinder.FriendsDetailFragment">
 
     <TextView
+        android:id="@+id/friend_email"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
         android:id="@+id/friend_id"
         android:gravity="center"
         android:textSize="30dp"
@@ -40,7 +47,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:src="@drawable/uw"
+        android:id="@+id/emote"
         android:layout_height="wrap_content" />
 
 </LinearLayout>

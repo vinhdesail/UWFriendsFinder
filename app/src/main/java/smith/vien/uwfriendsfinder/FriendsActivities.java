@@ -1,5 +1,7 @@
 package smith.vien.uwfriendsfinder;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -24,6 +26,7 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -35,7 +38,8 @@ import smith.vien.uwfriendsfinder.friendlisting.Friends;
  */
 public class FriendsActivities extends AppCompatActivity
         implements FriendsFragment.OnListFragmentInteractionListener,
-            EditPersonalInformation.EditInfomationListener {
+            EditPersonalInformation.EditInfomationListener,
+            UpdateUsername.EditUsernameListener {
 
     /** Side bar fields. */
     private ActionBarDrawerToggle myDrawerToggle;
@@ -117,7 +121,20 @@ public class FriendsActivities extends AppCompatActivity
     }
 
     /**
+     * Change the username.
+     * @param url the url.
+     */
+    @Override
+    public void editUsername(String url){
+        EditInfoTask task = new EditInfoTask();
+        task.execute(new String[]{url.toString()});
+
+        getSupportFragmentManager().popBackStackImmediate();
+    }
+
+    /**
      * Private Async task to allow user to edit personal information.
+     * Also use to edit username.
      */
     private class EditInfoTask extends AsyncTask<String, Void, String> {
 
@@ -190,10 +207,17 @@ public class FriendsActivities extends AppCompatActivity
     }
 
 
-
     // MENU BAR PRIVATE CLASS and METHODS
+
+    /**
+     * Draws the initial side menu.
+     */
     private void addDrawerItems(){
-        String[] menuArray = {"Edit Personal Info", "Logout","ADD MORE STUFF"};
+        final String[] menuArray = {
+                "Update info",
+                "Change UserName",
+                "Logout"
+        };
         myDrawList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menuArray));
 
         myDrawList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -211,9 +235,28 @@ public class FriendsActivities extends AppCompatActivity
                             .commit();
                     myDrawerLayout.closeDrawer(myDrawList);
                 }
-                if(position == 1){
-                    Intent intent = new Intent(FriendsActivities.this, MainActivity.class);
-                    startActivity(intent);
+                else if(position == 1){
+                    Intent intent = getIntent();
+                    final String str = intent.getStringExtra("email");
+                    UpdateUsername editUsername = new UpdateUsername();
+                    editUsername.setEmail(str);
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, editUsername)
+                            .addToBackStack(null)
+                            .commit();
+                    myDrawerLayout.closeDrawer(myDrawList);
+                }
+                else if(position == menuArray.length - 1){
+
+                    SharedPreferences sharedPreferences =
+                            getSharedPreferences(getString(R.string.LOGIN_PREFS), Context.MODE_PRIVATE);
+                    sharedPreferences.edit().putBoolean(getString(R.string.LOGGEDIN), false)
+                            .commit();
+
+                    Intent i = new Intent(FriendsActivities.this, MainActivity.class);
+                    startActivity(i);
+                    finish();
+
                 }
             }
         });
@@ -222,6 +265,9 @@ public class FriendsActivities extends AppCompatActivity
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
+    /**
+     * Set up the side menu.
+     */
     private void setupDrawer(){
         myDrawerToggle = new ActionBarDrawerToggle(this,
                 myDrawerLayout,
@@ -259,6 +305,11 @@ public class FriendsActivities extends AppCompatActivity
         myDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    /**
+     * When a menu get selected it runs this method
+     * @param item the item.
+     * @return boolean.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

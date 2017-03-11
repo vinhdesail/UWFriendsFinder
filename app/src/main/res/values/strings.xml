@@ -4,10 +4,16 @@
     <string name="title_activity_login">Sign in</string>
     <string name="friend_listing">See Friends Location</string>
     <string name="update_info">Update Info</string>
-    <string name="display_name">Display Name</string>
+    <string name="display_name">User Name</string>
     <string name="location">Location</string>
     <string name="feelings">Feeling</string>
     <string name="retype_email">Please Retype Email</string>
+    <string name="submit">Submit</string>
+
+    <string name="LOGIN_PREFS">edu.tacoma.uw.webserviceslab.PREFS</string>
+    <string name="LOGGEDIN">loggedin</string>
+    <string name="action_logout">LOG OUT</string>
+    <string name="LOGIN_FILE"> edu.uw.tacoma.vvien.webservicelab.LOGIN_FILE</string>
 
     <!-- Side menu bar -->
     <string name="drawer_open">Open navigation drawer</string>
@@ -34,15 +40,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>>
 
 
+    <string name="country_prompt">How Are You Feeling?</string>
 
-        <string name="country_prompt">How Are You Feeling?</string>
-
-        <string-array name="country_arrays">
-            <item>Satisfied</item>
-            <item>Could Eat</item>
-            <item>Full</item>
-            <item>Starving</item>
-            <item>DND</item>
-        </string-array>
+    <string-array name="country_arrays">
+        <item>Satisfied</item>
+        <item>Could Eat</item>
+        <item>Full</item>
+        <item>Starving</item>
+        <item>DND</item>
+    </string-array>
 
 </resources>

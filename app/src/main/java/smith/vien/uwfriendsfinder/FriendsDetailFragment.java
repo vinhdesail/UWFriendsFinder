@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import smith.vien.uwfriendsfinder.friendlisting.Friends;
@@ -27,6 +28,7 @@ public class FriendsDetailFragment extends Fragment {
     private TextView myDisplayName;
     private TextView myLocation;
     private TextView myFeeling;
+    private ImageView myEmote;
 
     /**
      * Constructor for the class.
@@ -57,6 +59,21 @@ public class FriendsDetailFragment extends Fragment {
             myDisplayName.setText(item.getDisplayName());
             myFeeling.setText(item.getFeelings());
             myLocation.setText(item.getLocation());
+            if (item.getFeelings().equalsIgnoreCase("satisfied")){
+                myEmote.setBackgroundResource(R.drawable.uw);
+            }
+            else if (item.getFeelings().equalsIgnoreCase("could eat")){
+                myEmote.setBackgroundResource(R.drawable.uw2);
+            }
+            else if (item.getFeelings().equalsIgnoreCase("full")){
+                myEmote.setBackgroundResource(R.drawable.uw3);
+            }
+            else if (item.getFeelings().equalsIgnoreCase("starving")){
+                myEmote.setBackgroundResource(R.drawable.uw4);
+            }
+            else if (item.getFeelings().equalsIgnoreCase("dnd")) {
+                myEmote.setBackgroundResource(R.drawable.uw6);
+            }
         }
 
     }
@@ -75,6 +92,7 @@ public class FriendsDetailFragment extends Fragment {
         myDisplayName = (TextView) view.findViewById(R.id.friend_name);
         myFeeling = (TextView) view.findViewById(R.id.friend_feeling);
         myLocation = (TextView) view.findViewById(R.id.friend_location);
+        myEmote = (ImageView) view.findViewById(R.id.emote);
 
         FloatingActionButton floatingActionButton = (FloatingActionButton)
                 getActivity().findViewById(R.id.fab);

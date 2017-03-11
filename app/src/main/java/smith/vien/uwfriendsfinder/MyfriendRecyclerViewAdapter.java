@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import smith.vien.uwfriendsfinder.FriendsFragment.OnListFragmentInteractionListener;
@@ -107,7 +108,7 @@ public class MyfriendRecyclerViewAdapter extends RecyclerView.Adapter<MyfriendRe
         public final TextView mIdView;
         public final TextView mContentView;
         public final TextView mFeelingView;
-        public final TextView mHungryview;
+        public final ImageView mHungryview;
         public Friends mItem;
 
         public ViewHolder(View view) {
@@ -116,7 +117,7 @@ public class MyfriendRecyclerViewAdapter extends RecyclerView.Adapter<MyfriendRe
             mIdView = (TextView) view.findViewById(R.id.email);
             mContentView = (TextView) view.findViewById(R.id.content);
             mFeelingView = (TextView) view.findViewById(R.id.feeling);
-            mHungryview = (TextView) view.findViewById(R.id.hungry);
+            mHungryview = (ImageView) view.findViewById(R.id.hungry);
         }
 
         @Override
