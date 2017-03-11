@@ -30,16 +30,22 @@ public class Friends implements Serializable{
      */
     public Friends(String displayName,
                    String feelings, String location) {
-        this.displayName = displayName;
-        this.feelings = feelings;
-        this.location = location;
-    }
+        if(displayName == null){
+            throw new IllegalArgumentException("Null Name");
+        } else {
+            this.displayName = displayName;
+        }
+        if(feelings == null){
+            throw new IllegalArgumentException("Null Feeling");
+        } else {
+            this.feelings = feelings;
+        }
+        if(location == null){
+            throw new IllegalArgumentException("Null Location");
+        } else {
+            this.location = location;
+        }
 
-    /**
-     * Default contructor to construct temporary data.
-     */
-    public Friends(){
-        //this("Vinh", "Happy", "cp206");
     }
 
 

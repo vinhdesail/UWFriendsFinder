@@ -132,6 +132,11 @@ public class FriendsFragment extends Fragment {
      * The task to call webservice and get friends information.
      */
     private class DownloadFriendsTask extends AsyncTask<String, Void, String> {
+        /**
+         * Preform task in background.
+         * @param urls the url.
+         * @return String.
+         */
         @Override
         protected String doInBackground(String... urls) {
             String response = "";
@@ -161,6 +166,10 @@ public class FriendsFragment extends Fragment {
             return response;
         }
 
+        /**
+         * before executiong.
+         * @param result the result.
+         */
         @Override
         protected void onPostExecute(String result) {
             // Something wrong with the network or the URL.
